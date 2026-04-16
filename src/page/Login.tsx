@@ -17,7 +17,7 @@ export default function Login() {
     const onSubmit = async (data: LoginFormData) => {
         console.log("Submitting...", data);
         await new Promise((resolve) => setTimeout(resolve, 2000));
-        alert("Login Berhasil!");
+        alert("Anda Berhasil Mendaftar!");
         reset();
     };
 
@@ -32,6 +32,14 @@ export default function Login() {
                         placeholder="Nama anda"
                         {...register("username")}
                         error={errors.username?.message}
+                    />
+
+                    <Input
+                        label="Email"
+                        type="email"
+                        placeholder="Email@gmail.com"
+                        {...register("email")}
+                        error={errors.email?.message}
                     />
 
                     <PasswordInput
