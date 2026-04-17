@@ -14,7 +14,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
         className={`px-4 py-2 border rounded-lg outline-none min-h-[100px] focus:ring-2 ${
           error ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-blue-100'
         }`}
-        {...props}
+        {...props} 
       />
       {error && <span className="text-xs text-red-500">{error}</span>}
     </div>

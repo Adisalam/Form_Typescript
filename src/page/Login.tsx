@@ -17,7 +17,7 @@ export default function Login() {
     const onSubmit = async (data: LoginFormData) => {
         console.log("Submitting...", data);
         await new Promise((resolve) => setTimeout(resolve, 2000));
-        alert("Anda Berhasil Mendaftar!");
+        alert("Anda Berhasil Mendaftar! Cek Email Anda Untuk Verifikasi");
         reset();
     };
 
