@@ -1,77 +1,50 @@
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { loginSchema } from "../components/schemas/loginSchemas";
-import { Button } from "../components/ui/Button";
-import { Input } from "../components/ui/Input";
-import { PasswordInput } from "../components/ui/PasswordInput";
-import { Select } from "../components/ui/Select";
-import { TextArea } from "../components/ui/TextArea";
-import * as z from "zod";
-type LoginFormData = z.infer<typeof loginSchema>;
+import Button from "../components/ui/Button";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Login() {
-    const { register, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm<LoginFormData>({
-        resolver: zodResolver(loginSchema),
-    });
+  const navigate = useNavigate();
 
-    const onSubmit = async (data: LoginFormData) => {
-        console.log("Submitting...", data);
-        await new Promise((resolve) => setTimeout(resolve, 2000));
-        alert("Anda Berhasil Mendaftar! Cek Email Anda Untuk Verifikasi");
-        reset();
-    };
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    alert("Login berhasil!");
+    navigate("/"); //  arahkan ke beranda
+  };
 
-    return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
-            <div className="w-full max-w-md bg-white p-8 rounded-2xl shadow-lg border">
-                <h1 className="text-2xl font-bold text-center mb-6">Daftar Event</h1>
+  return (
+    <div className="min-h-[calc(100vh-80px)] flex items-center justify-center bg-gray-100 px-4">
+      <div className="bg-white rounded-xl shadow-md overflow-hidden flex max-w-4xl w-full">
 
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-                    <Input
-                        label="Nama"
-                        placeholder="Nama anda"
-                        {...register("username")}
-                        error={errors.username?.message}
-                    />
-
-                    <Input
-                        label="Email"
-                        type="email"
-                        placeholder="Email@gmail.com"
-                        {...register("email")}
-                        error={errors.email?.message}
-                    />
-
-                    <PasswordInput
-                        label="Password"
-                        placeholder="••••••••"
-                        {...register("password")}
-                        error={errors.password?.message}
-                    />
-
-                    <Select
-                        label="Kategori Event"
-                        {...register("category")}
-                        error={errors.category?.message}
-                        options={[
-                            { value: "Invofest", label: "Infovest" },
-                            { value: "Inforsary", label: "Infrosary" },
-                            { value: "Futsal", label: "Futsal" },
-                        ]}
-                    />
-
-                    <TextArea
-                        label="Bio Singkat"
-                        placeholder="Ceritakan sedikit tentang dirimu..."
-                        {...register("bio")}
-                        error={errors.bio?.message}
-                    />
-
-                    <Button type="submit" isLoading={isSubmitting}>
-                        Daftar
-                    </Button>
-                </form>
-            </div>
+        {/* LEFT */}
+        <div className="hidden md:flex w-1/2 bg-gradient-to-brown from-red-100 to-red-200 items-center justify-center p-6">
+          <img
+            src="https://www.invofest-harkatnegeri.com/assets/Maskot-Hero.png"
+            alt="login"
+            className="w-72"
+          />
         </div>
-    );
+
+        {/* RIGHT */}
+        <div className="w-full md:w-1/2 p-8">
+          <h1 className="text-2xl font-bold text-red-900 text-center mb-6">
+            Login
+          </h1>
+
+          <form onSubmit={handleLogin} className="flex flex-col gap-4">
+            <input type="email" placeholder="Email" className="border p-3 rounded-lg" />
+            <input type="password" placeholder="Password" className="border p-3 rounded-lg" />
+
+            <Button label="Masuk" variant="primary" />
+
+            <p className="text-sm text-center text-gray-600">
+              Belum punya akun?{" "}
+              <Link to="/register" className="text-red-900 font-semibold">
+                Registrasi Sekarang
+              </Link>
+            </p>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  );
 }
