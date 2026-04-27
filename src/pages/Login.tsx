@@ -1,11 +1,11 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema } from "../components/schemas/loginSchemas";
-import { Button } from "../components/atoms/Button";
-import { Input } from "../components/atoms/Input";
-import { PasswordInput } from "../components/atoms/PasswordInput";
-import { Select } from "../components/atoms/Select";
-import { TextArea } from "../components/atoms/TextArea";
+import { Button } from "../components/ui/Button";
+import { Input } from "../components/ui/Input";
+import { PasswordInput } from "../components/ui/PasswordInput";
+import { Select } from "../components/ui/Select";
+import { TextArea } from "../components/ui/TextArea";
 import * as z from "zod";
 type LoginFormData = z.infer<typeof loginSchema>;
 
