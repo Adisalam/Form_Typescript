@@ -10,7 +10,7 @@ export const NavLink: React.FC<NavLinkProps> = ({
   icon,
   isActive = false,
 }) => {
-  const activeStyle = "text-gray-900";
+  const activeStyle = "text-red-900";
   const defaultStyle = "text-slate-600 hover:text-red-900";
   return (
     <a

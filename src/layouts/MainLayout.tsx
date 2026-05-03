@@ -5,7 +5,14 @@ export default function MainLayout() {
   return (
     <>
       <Header />
-      <Outlet /> {/* INI YANG NENTUIN HALAMAN MUNCUL */}
+
+      <main className="py-24 container mx-auto">
+        <Outlet />
+      </main>
+
+      <footer>
+        <div>&copy; 2026 Universitas Harkat Negeri</div>
+      </footer>
     </>
   );
 }
