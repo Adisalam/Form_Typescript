@@ -17,7 +17,7 @@ type FormData = {
 
 const schema = z.object({
   username: z.string().min(1, "Username harus diisi"),
-  password: z.string().min(8, "Minimal 8 Karakter"),
+  password: z.string().min(5, "Minimal 8 Karakter"),
 });
 
 export default function Login() {
@@ -33,8 +33,8 @@ export default function Login() {
   const onSubmit = (data: FormData) => {
     console.log(data);
     if (
-      data.username === "admin@gmail.com" &&
-      data.password === "admin123"
+      data.username === "adisalam" &&
+      data.password === "adi123"
     ) {
       alert("Login Berhasil");
       login(data.username);
