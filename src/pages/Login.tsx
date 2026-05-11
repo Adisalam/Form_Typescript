@@ -33,7 +33,7 @@ export default function Login() {
   const onSubmit = (data: FormData) => {
     console.log(data);
     if (
-      data.username === "adisalam" &&
+      data.username === "adi" &&
       data.password === "adi123"
     ) {
       alert("Login Berhasil");
